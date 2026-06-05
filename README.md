@@ -32,9 +32,7 @@ On mobile browsers, native scrolling strictly overrides JavaScript touch events 
 The Solution: Virtual Scrolling
 If you require 1:1 pure touch precision for the fluid simulation but still need a scrollable webpage, you must bypass the browser's native scroll engine entirely using a Virtual Scroll (or Smooth Scroll) library.
 
-1. Disable Native Scrolling: Lock the viewport using CSS (html, body { overflow: hidden; touch-action: none; overscroll-behavior: none; }).
-
-2. Implement a Scroll Library: Use a lightweight virtual scroll engine like Lenis or Locomotive Scroll.
+**Implement a Scroll Library: Use a lightweight virtual scroll engine like Lenis or Locomotive Scroll.**
 
 How it works: These libraries translate scroll inputs into CSS transform: translateY() movements. Because the native scroll engine is never triggered, the browser never hijacks the touch thread, ensuring your WebGL canvas receives 100% of the precise touch data while the user navigates the site.
 
