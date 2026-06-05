@@ -53,9 +53,12 @@
             // LENIS SMOOTH SCROLLING
             // https://github.com/darkroomengineering/lenis
             const lenis = new Lenis({
+                allowNestedScroll: true, // For optimization, it is recommended to use the `prevent` parameter instead of `allowNestedScroll`.
+                touchInertiaExponent: 2.2,
+                syncTouchLerp: 0.025,
                 syncTouch: true,
             });
-            // Simulation section
+
             // Lenis Animation Loop
             function raf(time) {
                 lenis.raf(time);
