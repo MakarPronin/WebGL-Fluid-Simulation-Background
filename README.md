@@ -27,7 +27,7 @@ You can use this lightweight version to easily add interactive fluid backgrounds
 
 ### Mobile Touch Events vs. Native Scrolling
 
-On mobile browsers, native scrolling strictly overrides JavaScript touch events to preserve performance. When a user swipes to scroll down the page, the browser immediately fires a touchcancel event and stops sending touchmove data to the background canvas. This causes the fluid simulation to pause or appear unresponsive while the page is in motion.
+On mobile browsers, native scrolling strictly overrides JavaScript touch events to preserve performance. When a user swipes to scroll down the page, the browser immediately fires a touchcancel event and stops sending touchmove data to the background canvas. This causes the fluid simulation to appear unresponsive while the page is in motion.
 
 The Solution: Virtual Scrolling
 If you require 1:1 pure touch precision for the fluid simulation but still need a scrollable webpage, you must bypass the browser's native scroll engine entirely using a Virtual Scroll (or Smooth Scroll) library.
