@@ -23,6 +23,23 @@ You can use this lightweight version to easily add interactive fluid backgrounds
 
 *Note: You may need to adjust the `config` variables within the script and/or tweak the CSS styles to match your specific design needs.*
 
+## Potential Problems & Known Limitations
+
+### Mobile Touch Events vs. Native Scrolling
+
+On mobile browsers, native scrolling strictly overrides JavaScript touch events to preserve performance. When a user swipes to scroll down the page, the browser immediately fires a touchcancel event and stops sending touchmove data to the background canvas. This causes the fluid simulation to pause or appear unresponsive while the page is in motion.
+
+The Solution: Virtual Scrolling
+If you require 1:1 pure touch precision for the fluid simulation but still need a scrollable webpage, you must bypass the browser's native scroll engine entirely using a Virtual Scroll (or Smooth Scroll) library.
+
+1. Disable Native Scrolling: Lock the viewport using CSS (html, body { overflow: hidden; touch-action: none; overscroll-behavior: none; }).
+
+2. Implement a Scroll Library: Use a lightweight virtual scroll engine like Lenis or Locomotive Scroll.
+
+How it works: These libraries translate scroll inputs into CSS transform: translateY() movements. Because the native scroll engine is never triggered, the browser never hijacks the touch thread, ensuring your WebGL canvas receives 100% of the precise touch data while the user navigates the site.
+
+*Note for Site Builders: If you are implementing this inside a builder like Tilda or Webflow, virtual scroll scripts must be applied to a master wrapper <div> and may conflict with native sticky elements or mobile menus. Test thoroughly.*
+
 ## Live Example
 
 You can interact with a live demo of this fluid simulation background at https://fama.marketing.
