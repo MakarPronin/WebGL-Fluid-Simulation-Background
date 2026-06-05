@@ -15,28 +15,27 @@ You can use this lightweight version to easily add interactive fluid backgrounds
 ![Base version screenshot](BaseVersionScreenshot.png)
 *Standard version.*
 
+## Folder Structure & Available Versions
+
+1. `html_fluid`: The original simulation by Pavel Dobryakov, bundled into a single HTML file.
+2. `html_fluid_lite`: A lightweight version optimized for performance by removing Bloom, Sunrays, and shading effects.
+3. `html_fluid_lite_onhover`: Adapts the lightweight version to trigger fluid effects on mouse hover rather than click.
+4. `html_fluid_lite_onhover_element`: Configured to be embedded as a standalone, localized element within a webpage.
+5. `html_fluid_lite_onhover_background`: Configured specifically for use as a full-page website background.
+6. `html_fluid_lite_onhover_background_lightTheme`: The background version, pre-styled for light-themed websites.
+7. `html_fluid_lite_onhover_background_mobileFixed`: The background version extended with mobile device support *(Note: this replaces native scrolling logic with Lenis)*.
+8. `html_fluid_lite_onhover_background_mobileFixed_lightTheme`: The mobile-optimized background version, pre-styled for light themes.
+
+**I recommend using 7 and 8.**
+
+
 ## How to Add to Your Website
 
 1. Choose your preferred version by selecting the corresponding folder.
 2. Copy all the HTML content from inside the `<body>` element (excluding the `<body>` tags themselves).
 3. Paste it into your website's HTML body.
 
-*Note: You may need to adjust the `config` variables within the script and/or tweak the CSS styles to match your specific design needs.*
-
-## Potential Problems & Known Limitations
-
-### Mobile Touch Events vs. Native Scrolling
-
-On mobile browsers, native scrolling strictly overrides JavaScript touch events to preserve performance. When a user swipes to scroll down the page, the browser immediately fires a touchcancel event and stops sending touchmove data to the background canvas. This causes the fluid simulation to appear unresponsive while the page is in motion.
-
-The Solution: Virtual Scrolling
-If you require 1:1 pure touch precision for the fluid simulation but still need a scrollable webpage, you must bypass the browser's native scroll engine entirely using a Virtual Scroll (or Smooth Scroll) library.
-
-**Implement a Scroll Library: Use a lightweight virtual scroll engine like Lenis or Locomotive Scroll.**
-
-How it works: These libraries translate scroll inputs into CSS transform: translateY() movements. Because the native scroll engine is never triggered, the browser never hijacks the touch thread, ensuring your WebGL canvas receives 100% of the precise touch data while the user navigates the site.
-
-*Note for Site Builders: If you are implementing this inside a builder like Tilda or Webflow, virtual scroll scripts must be applied to a master wrapper <div> and may conflict with native sticky elements or mobile menus. Test thoroughly.*
+*Note: You may need to adjust the `config` or `lenis` values within the script and/or tweak the CSS styles to match your specific design needs.*
 
 ## Live Example
 
@@ -46,8 +45,9 @@ You can interact with a live demo of this fluid simulation background at https:/
 
 MIT License
 
-Copyright (c) 2017 Pavel Dobryakov  
-Copyright (c) 2026 Makar Pronin
+Copyright (c) 2017 (Pavel Dobryakov)[https://github.com/PavelDoGreat/WebGL-Fluid-Simulation]
+Copyright (c) 2026 (Darkroom Engineering)[https://github.com/darkroomengineering/lenis]
+Copyright (c) 2026 (Makar Pronin)[https://github.com/MakarPronin/WebGL-Fluid-Simulation-Background]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
